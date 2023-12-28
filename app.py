@@ -70,8 +70,8 @@ with col3:
         hasil = 100 - (np.round(y_prob[0], 2) * 100)
         string_hasil = ("buatan AI" if hasil > 50 else "bukan buatan AI")
         
-        # kalau lebih dari sama dengan 50 persen kemungkinannya tinggi buatan AI, 
-        # sementara di bawah 50 persen berarti belom tentu
+        # kalau lebih dari 50 persen kemungkinannya tinggi buatan AI, 
+        # sementara di bawahnya berarti belom tentu
         
         st.write('Menurut model, gambar di samping ', string_hasil)
     
