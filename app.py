@@ -37,7 +37,7 @@ with col1:
 with col2:
     if submit:
         with st.spinner():
-          st.image(data)
+            st.image(data)
         
 with col3:
     if submit:
