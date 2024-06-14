@@ -1,7 +1,7 @@
 Link:
 https://ai-anime-illust-detector.streamlit.app/?embed_options=dark_theme
 
-Not 100% accurate, only trained with 1500 AI & Non-AI illustration
+Not 100% accurate, only trained with 2000 AI & Non-AI illustration
 Using MobileNet V3
 
 Reasons:
