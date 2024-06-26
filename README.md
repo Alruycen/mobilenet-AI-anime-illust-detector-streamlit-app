@@ -9,3 +9,8 @@ Reasons:
 - Better, smaller, and faster in comparison
 
 No copyright yet, so I hope very much for your wise and good cooperation
+
+Update V1
+Changes to model layers:
+- Omit: Dropout layers
++ Add: Batch Normalization layers
