@@ -73,7 +73,7 @@ with col3:
         # kalau lebih dari sama dengan 50 persen kemungkinannya tinggi buatan AI, 
         # sementara di bawah 50 persen berarti belom tentu
         
-        st.write('Menurut model, gambar di samping ', string_hasil)
+        st.write('Menurut model, gambar tersebut ', string_hasil)
     
         st.write('Berikut merupakan persentasenya: ')
         st.write(hasil)
