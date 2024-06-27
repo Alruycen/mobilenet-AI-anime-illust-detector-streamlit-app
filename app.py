@@ -46,13 +46,13 @@ with col3:
                 best_model = keras.models.load_model('ai_detection_best_model.h5')
             
             # Resize image
-            resized_data = data.resize((224, 224))
+            resized_data = data.resize((256,256))
 
             # Change to arr and convert to 3 channel (RGB)
             rgb_data = np.array(resized_data.convert("RGB"))
         
             # Rescale
-            rescaled_data = img_to_array(rgb_data) * 1./255
+            rescaled_data = img_to_array(rgb_data) * 1.0/255.0
         
             # Numpy Array
             data_arr = np.array([rescaled_data])  
@@ -68,12 +68,12 @@ with col3:
         # dalam kasus ini, 100 - (probability non-AI, karena non-AI mendekati 1, 
         # sementara AI mendekati 0)
         hasil = 100 - (np.round(y_prob[0], 2) * 100)
-        string_hasil = ("AI-generated" if hasil > 50 else "not AI-generated")
+        string_hasil = ('AI-generated' if hasil > 50 else 'not AI-generated')
         
         # kalau lebih dari sama dengan 50 persen kemungkinannya tinggi buatan AI, 
         # sementara di bawah 50 persen berarti belom tentu
         
         st.write('Based on model prediction, this illustration is ', string_hasil)
     
-        st.write('AI-generated features detected: ')
+        st.write('AI-generated features detected in percentages: ')
         st.write(hasil)
