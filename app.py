@@ -46,7 +46,7 @@ with col3:
                 best_model = keras.models.load_model('ai_detection_best_model.h5')
             
             # Resize image
-            resized_data = data.resize((256,256))
+            resized_data = data.resize((224,224))
 
             # Change to arr and convert to 3 channel (RGB)
             rgb_data = np.array(resized_data.convert("RGB"))
