@@ -44,9 +44,6 @@ with col3:
         with st.spinner('Please wait for a moment, the model is working...'):
             if best_model is None:
                 best_model = keras.models.load_model('ai_detection_best_model.h5')
-            
-            # Resize image
-            resized_data = data.resize((224,224))
 
             # Change to arr and convert to 3 channel (RGB)
             rgb_data = np.array(resized_data.convert("RGB"))
