@@ -2,7 +2,7 @@
 import streamlit as st
 import numpy as np
 from PIL import Image
-from tensorflow.keras.preprocessing.image import img_to_array
+from tensorflow.keras.preprocessing.image import img_to_array, ImageDataGenerator
 from tensorflow import keras
 
 st.set_page_config(page_title='Detect AI-generated Anime Illustrations',
@@ -40,6 +40,9 @@ with col2:
             st.image(data)
         
 with col3:
+    def rescale(image):
+        return (image / 127.5) - 1.0
+    
     if submit:
         with st.spinner('Please wait for a moment, the model is working...'):
             if best_model is None:
@@ -47,17 +50,32 @@ with col3:
 
             resized_data = data.resize((224, 224))
             
-            # Change to arr and convert to 3 channel (RGB)
+            # ganti ke array dan convert ke RGB
             rgb_data = np.array(resized_data.convert("RGB"))
-        
-            # Rescale
-            rescaled_data = img_to_array(rgb_data) * 1.0/255.0
-        
-            # Numpy Array
-            data_arr = np.array([rescaled_data])  
+
+            # augmentation
+            test_gen = ImageDataGenerator(
+                preprocessing_function=rescale,
+                rotation_range=20,
+                zoom_range=0.2,
+                shear_range=0.2,
+                width_shift_range=0.1,
+                height_shift_range=0.1,
+                horizontal_flip=True
+            )
+
+            # dapetin data test dari augmentation
+            augmented_iter = test_gen.flow(np.expand_dims(rgb_data, axis=0), batch_size=1)
             
-            # Hasil prediksi            
-            y_prob = best_model.predict(data_arr) 
+            augmented_images = [augmented_iter.next()[0] for _ in range(9)]
+            
+            # test-time augmentation
+            def tta_predict(model, data_list):
+                yhat = [model.predict(np.expand_dims(img, axis=0)) for img in data_list]
+                return np.mean(yhat, axis=0)
+            
+            # Hasil Prediksi
+            y_prob = tta_predict(best_model, augmented_images)
             
         st.success('Finish!')
         
