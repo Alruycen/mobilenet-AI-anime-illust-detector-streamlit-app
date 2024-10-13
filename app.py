@@ -31,7 +31,7 @@ def load_best_model():
     global best_model
     if best_model is None:
         with st.spinner("Loading model..."):
-            best_model = keras.models.load_model('ai_detection_best_model.keras', custom_objects=None, compile=True)
+            best_model = keras.models.load_model('ai_detection_best_model', custom_objects=None, compile=True)
     return best_model
 
 def rescale(image):
