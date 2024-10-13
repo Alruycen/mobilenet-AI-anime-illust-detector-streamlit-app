@@ -23,9 +23,11 @@ Changes to augmentation:
 + Added test-time augmentation (TTA), applied in evaluation
 
 Changes to model layers:
-+ Add: Dropout layer (0.2), Dense L2 regularizers (1e-4), Batch-Normalization (momentum=0.9)+
++ Add: Dropout layer (0.2), Batch-Normalization (momentum=0.9)+
 + Activation (relu -> gelu)
-+ 8 more trainable layers (Dense with 512 units - Batch-Normalization - Activation GeLU - Dropout) 2x
++ Optimizer (adam -> adamw with decay 1e-2)
++ 6 more trainable layers
++ Saved file (.h5 -> .keras because of adamw not supported in legacy .h5)
 
 Changes to evaluation:
 + Test-time augmentation (TTA) with ImageDataGenerator
