@@ -58,7 +58,7 @@ def plot_images(rescaled_images, n):
     with st.spinner("Augmenting images..."):
         fig, ax = plt.subplots(1, 6, figsize=(8, 8))
         for i in range(n_aug):
-            ax[i // 6 i % 6].imshow(rescaled_images[i])
+            ax[i // 6, i % 6].imshow(rescaled_images[i])
             ax[i // 6, i % 6].axis("off")
         plt.tight_layout()
         st.pyplot(fig) 
