@@ -15,7 +15,7 @@ st.header('Detect Anime Illustrations produced by Generative AI')
 col1, col2, col3 = st.columns(3)
 
 best_model = None
-n_aug = 10
+n_aug = 6
 
 # function untuk upload gambar dalam try-catch
 def unggah_gambar():
@@ -56,10 +56,10 @@ def rescale_for_plotting(image):
 
 def plot_images(rescaled_images, n):
     with st.spinner("Augmenting images..."):
-        fig, ax = plt.subplots(2, 5, figsize=(8, 8))
+        fig, ax = plt.subplots(1, 6, figsize=(8, 8))
         for i in range(n_aug):
-            ax[i // 5, i % 5].imshow(rescaled_images[i])
-            ax[i // 5, i % 5].axis("off")
+            ax[i // 6 i % 6].imshow(rescaled_images[i])
+            ax[i // 6, i % 6].axis("off")
         plt.tight_layout()
         st.pyplot(fig) 
 
@@ -99,7 +99,7 @@ with col3:
             
             augmented_images = [augmented_iter.next()[0] for _ in range(n_aug - 1)]
 
-            augmented_images.append(rescale(rgb_data))
+            augmented_images.insert(0, rescale(rgb_data))
 
             # dapetin gambar dari data test augmented
             rescaled_images = [rescale_for_plotting(img) for img in augmented_images]
