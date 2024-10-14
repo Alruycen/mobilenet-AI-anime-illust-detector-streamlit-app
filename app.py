@@ -15,7 +15,7 @@ st.header('Detect Anime Illustrations produced by Generative AI')
 col1, col2, col3 = st.columns(3)
 
 best_model = None
-n_aug = 6
+n_aug = 20
 
 # function untuk upload gambar dalam try-catch
 def unggah_gambar():
@@ -57,11 +57,15 @@ def rescale_for_plotting(image):
 def plot_images(rescaled_images, n):
     with st.spinner("Augmenting images..."):
         fig, ax = plt.subplots(1, 6, figsize=(8, 8))
-        for i in range(n_aug):
-            ax[i // 6, i % 6].imshow(rescaled_images[i])
-            ax[i // 6, i % 6].axis("off")
-        plt.tight_layout()
-        st.pyplot(fig) 
+        for i in range(6):
+            ax[i % 6].imshow(rescaled_images[i])
+            if i == 0:
+                ax[i % 6].set_title(f"Original image", fontsize=10)  
+            else:
+                ax[i % 6].set_title(f"Augmented: {i}", fontsize=10)  
+            ax[i % 6].axis("off")
+        fig.tight_layout()
+        st.pyplot(fig)
 
 # test-time augmentation
 def tta_predict(model, images):
@@ -97,7 +101,7 @@ with col3:
             # dapetin data test dari augmentation
             augmented_iter = test_gen.flow(np.expand_dims(rgb_data, axis=0), batch_size=1)
             
-            augmented_images = [augmented_iter.next()[0] for _ in range(n_aug - 1)]
+            augmented_images = [augmented_iter.next()[0] for _ in range(n_aug)]
 
             augmented_images.insert(0, rescale(rgb_data))
 
