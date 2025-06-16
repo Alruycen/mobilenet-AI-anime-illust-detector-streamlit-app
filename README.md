@@ -17,7 +17,7 @@ Changes to model layers:
 
 Update V2
 Changes to augmentation:
-+ Rescale 1./255. -> 1./127.5 + 2
++ Rescale 1./255. -> (1./127.5) - 1
 + Increased augmentation value in general (rotation 40 -> 60, zoom 0.2 -> 0.3, shear 0.2 -> 0.3)
 + Added augmentation (brightness 0.8...1.2, channel shift 30.
 + Added test-time augmentation (TTA), applied in evaluation
