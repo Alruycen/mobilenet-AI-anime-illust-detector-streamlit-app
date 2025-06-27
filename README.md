@@ -2,9 +2,9 @@ Link:
 https://ai-anime-illust-detector.streamlit.app/?embed_options=dark_theme
 
 Only trained with 2000 AI & Non-AI illustration, maybe not accurate
-Using MobileNet V3
 
-Reasons:
+
+Using MobileNet V3, reasons:
 - Have higher evaluation compared to MobileNetV2 (better) and Inception V3 (faster)
 - Better, smaller, and faster in comparison
 
