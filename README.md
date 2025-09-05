@@ -8,7 +8,10 @@ Using MobileNet V3, reasons:
 - Have higher evaluation compared to MobileNetV2 (better) and Inception V3 (faster)
 - Better, smaller, and faster in comparison
 
-Copyrighted, for future model development or similar research, feel free to contact and discuss
+Copyrighted on:
+https://dx.doi.org/10.62527/joiv.9.4.2899
+for future model development or similar research, feel free to contact and discuss
+
 
 Update V1
 Changes to model layers:
